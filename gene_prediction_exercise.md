@@ -56,9 +56,10 @@ Unarchive file:
 ### Step 2: Use Augustus to predict all open reading frames of protein coding genes
 
 For eukaryotes it might take considerable time to run, instead copy the file from the existing precomputed directory:
-`#augustus GCA_000447455.1_Cand_albi_A123_V1_genomic.fna --species=candida_albicans > GCA_000447455.1_Cand_albi_A123_V1_genomic.gff;
-cp  /home/ubuntu/gene_prediction/GCA_000447455.1_Cand_albi_A123_V1_genomic.gff .
-`
+`#augustus GCA_000447455.1_Cand_albi_A123_V1_genomic.fna --species=candida_albicans > GCA_000447455.1_Cand_albi_A123_V1_genomic.gff`
+
+`cp  /home/ubuntu/gene_prediction/GCA_000447455.1_Cand_albi_A123_V1_genomic.gff .`
+
 
 Extract proteins from the generated gff file using the following command:
 
