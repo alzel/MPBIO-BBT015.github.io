@@ -2,7 +2,7 @@
 
 We will analyze two genomes, one from prokaryote and one from eukaryote - 
 Escherichia coli ATCC 25922 and Candida albicans A123 respectively. 
-We will use two standard tools for finding genes, i.e. Prodigal (https://github.com/hyattpd/Prodigal) and Augustus(https://github.com/Gaius-Augustus/Augustus).
+We will use two standard tools for finding genes, i.e. Prodigal (https://github.com/hyattpd/Prodigal) and Augustus (https://github.com/Gaius-Augustus/Augustus).
 
 ## Prokaryotic gene annotation
 
@@ -77,6 +77,7 @@ We will use `blastp` to blast your identified sequences to the database of Unipr
 
 `#makeblastdb -in uniprot_sprot.fasta -dbtype prot -out uniprot_database`
 `#blastp -query GCA_000447455.1_Cand_albi_A123_V1_genomic.aa -db uniprot_database -outfmt 7 -out results &`
+
 `cp /home/ubuntu/gene_prediction/results .`
 
 
