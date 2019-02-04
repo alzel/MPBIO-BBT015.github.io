@@ -42,7 +42,7 @@ Get yourself familiar with tRNAscan-SE options. To predict genes in prokaryote r
 
 
 
-## Eukaryotic gene annotation
+## Eukaryotic gene finding
 ### Step 1: Obtain data files
 
 Try to find navigate yourself NCBI FTP site yourself and find GCA_000447455.1_Cand_albi_A123_V1 genome, 
@@ -53,14 +53,43 @@ Alternatively, download genome to remote computer by running the following comma
 Unarchive file:
 `gunzip GCA_000447455.1_Cand_albi_A123_V1/GCA_000447455.1_Cand_albi_A123_V1_genomic.fna.gz`
 
-### Step 2: Use prodigal to predict all open reading frames of protein coding genes
+### Step 2: Use Augustus to predict all open reading frames of protein coding genes
 
 For eukaryotes it might take considerable time to run, instead copy the file from the existing precomputed directory:
 `#augustus GCA_000447455.1_Cand_albi_A123_V1_genomic.fna --species=candida_albicans > GCA_000447455.1_Cand_albi_A123_V1_genomic.gff;
 cp  /home/ubuntu/gene_prediction/GCA_000447455.1_Cand_albi_A123_V1_genomic.gff .
 `
 
-Coun
+Extract proteins from the generated gff file using the following command:
+
+`getAnnoFasta.pl GCA_000447455.1_Cand_albi_A123_V1_genomic.gff`
+
+
+Analogously like with prokaryotes you can use `tRNAscan-SE` to find tRNAs in the Candida yeast genome. Please see command help to specify correct arguments.
+
+### Step 3: Use Uniprot/(Swiss-Prot) manually curated sequences to annotate identified proteins
+
+First dowload database of sequences from https://www.uniprot.org/downloads. The sequences were already downloaded for you, just simply use the following command to copy them to your working directory:
+
+`cp /home/ubuntu/gene_prediction/uniprot_sprot.fasta .`
+
+We will use `blastp` to blast your identified sequences to the database of Uniprot sequences, but before this we need to create a blast database (takes time to run).
+
+`#makeblastdb -in uniprot_sprot.fasta -dbtype prot -out uniprot_database`
+`#blastp -query GCA_000447455.1_Cand_albi_A123_V1_genomic.aa -db uniprot_database -outfmt 7 -out results &`
+`cp /home/ubuntu/gene_prediction/results .`
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
 
 
 
